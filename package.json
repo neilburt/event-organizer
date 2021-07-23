@@ -13,11 +13,17 @@
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
+    "got": "^12.0.0-beta.1",
     "jass-js": "^1.1.4",
     "mysql2": "^2.2.5",
+    "node-fetch": "^2.6.1",
     "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
