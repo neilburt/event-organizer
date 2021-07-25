@@ -1,7 +1,9 @@
+
+const router = require('express').Router();
 const fetch = require("node-fetch");
 
-router.get('/api/events', async function(req, res) {
-    console.log("api hit")
+router.get('/', async function(req, res) {
+    console.log("api hit");
   
     // const apikey = "41ea6b300379c4e9d39458d185e60c52b49d4768398589851fa2ecdd1bd7b30f:MjI2MjI4NTh8MTYyNjk3MDg5NS41Mzc3NTc";
   
@@ -16,7 +18,6 @@ router.get('/api/events', async function(req, res) {
     console.log(data)
   
     res.json({data: data});
-  
   });
 
-  module.exports = router;
+module.exports = router;

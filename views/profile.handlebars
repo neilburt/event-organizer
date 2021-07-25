@@ -14,7 +14,7 @@
     {{#each events as |event|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/project/{{event.id}}">{{event.name}}</a></h4>
+        <h4><a href="/events/{{event.id}}">{{event.name}}</a></h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{event.id}}">DELETE</button>
@@ -27,15 +27,15 @@
   <h3>Create a New Project:</h3>
     <form class="form new-project-form">
       <div class="form-group">
-        <label for="project-name">project name:</label>
+        <label for="project-name">Event Name:</label>
         <input class="form-input" type="text" id="project-name" name="project-name" />
       </div>
       <div class="form-group">
-        <label for="project-funding">needed funding ($):</label>
+        <label for="project-funding">Maximum Capacity</label>
         <input class="form-input" type="number" id="project-funding" name="project-funding" />
       </div>
       <div class="form-group">
-        <label for="project-desc">description:</label>
+        <label for="project-desc">Description:</label>
         <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
       </div>
       <div class="form-group">
