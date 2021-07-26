@@ -1,13 +1,34 @@
-// const User = require('./User');
+const User = require('./User');
+const SavedEvent = require('./SavedEvent');
+const CreatedEvent = require('./CreatedEvent');
 
 
-// User.hasMany(Project, {
-//   foreignKey: 'user_id',
-//   onDelete: 'CASCADE'
-// });
+User.hasMany(SavedEvent, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+}),
 
-// Project.belongsTo(User, {
-//   foreignKey: 'user_id'
-// });
+User.hasMany(CreatedEvent, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+}),
 
-// module.exports = { User };
+SavedEvent.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+}),
+
+CreatedEvent.belongsTo(SavedEvent, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+}),
+
+
+SavedEvent.hasMany(CreatedEvent, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+}),
+
+
+
+module.exports = { User, SavedEvent, CreatedEvent };

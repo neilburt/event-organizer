@@ -1,17 +1,16 @@
 const router = require('express').Router();
 // const withAuth = require('../utils/auth');
-const { User } = require("../models");
-// const fetch = require("node-fetch");
+const User = require("../models/User");
+const fetch = require("node-fetch");
 
 router.get('/', async (req, res) => {
-  console.log("Home page");
+  console.log("landing page");
   try {
-  
-
-    res.render('home', {
+    res.render('landing', {
       User,
-      logged_in: req.session.logged_in,
+      // logged_in: req.session.logged_in,
     });
+    
   } catch (err) {
     res.status(500).json(err);
   }
@@ -19,20 +18,20 @@ router.get('/', async (req, res) => {
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/dashboard');
     return;
   }
 
   res.render('login');
 });
 
-router.get('/event', (req, res) => {
+router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/dashboard');
     return;
   }
 
-  res.render('event');
+  res.render('dashboard');
 });
 
 

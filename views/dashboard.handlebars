@@ -8,7 +8,7 @@
   <div class="col-md-6">
 
   {{#if events.length}}
-  <div class="col-md-6 project-list">
+  <div class="col-md-6 event-list">
     <h2>Saved Events!</h2>
 
     {{#each events as |event|}}
@@ -24,22 +24,22 @@
   </div>
   {{/if}}
 
-  <h3>Create a New Project:</h3>
-    <form class="form new-project-form">
+  <h3>Create a New Event:</h3>
+    <form class="form new-event-form">
       <div class="form-group">
-        <label for="project-name">Event Name:</label>
-        <input class="form-input" type="text" id="project-name" name="project-name" />
+        <label for="event-name">Event Name:</label>
+        <input class="form-input" type="text" id="event-name" name="event-name" />
       </div>
       <div class="form-group">
-        <label for="project-funding">Maximum Capacity</label>
-        <input class="form-input" type="number" id="project-funding" name="project-funding" />
+        <label for="location">Location:</label>
+        <input class="form-input" type="number" id="location" name="location" />
       </div>
       <div class="form-group">
-        <label for="project-desc">Description:</label>
-        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+        <label for="details">Details:</label>
+        <textarea class="form-input" id="details" name="details"></textarea>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Bada Bing Bada Boom</button>
       </div>
     </form>
   </div>
