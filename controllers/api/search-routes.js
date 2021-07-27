@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { response } = require('express');
 const fetch = require("node-fetch");
 
 // Search by Zipcode
