@@ -15,17 +15,26 @@ CreatedEvent.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: DataTypes.NOW
         },
 
         location: {
             type: DataTypes.STRING,
-            allowNull: false,
-
+            allowNull: false
         },
+        
+        // type: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false
+        // },
+
+        // date: {
+        //     type: DataTypes.DATE,
+        //     allowNull: false
+        // },
 
         details: {
             type: DataTypes.TEXT,
+            defaultValue: "Details unavailable."
         },
 
         user_id: {
@@ -38,7 +47,7 @@ CreatedEvent.init(
     },
     {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         freezeTableName: true,
         modelName: 'createdEvent'
     }
