@@ -32,9 +32,7 @@ User.init(
     },
 
     zipcode: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      
+      type: DataTypes.INTEGER
     },
 
     password: {

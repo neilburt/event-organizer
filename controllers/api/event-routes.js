@@ -2,7 +2,7 @@ const router = require('express').Router();
 const CreatedEvent  = require('../../models/CreatedEvent');
 const withAuth = require('../../utils/auth');
 
-//Create events
+// Create events
 router.post('/', async (req, res) => {
   try{
     const newEvent = await CreatedEvent.create({
@@ -42,7 +42,7 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-//Allows to delete saved events
+// Allows to delete saved events
 router.delete('/:id', withAuth, async (req, res) => {
   try{
     const savedEventData = await SavedEvent.destroy({
