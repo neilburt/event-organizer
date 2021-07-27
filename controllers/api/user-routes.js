@@ -1,94 +1,34 @@
 const router = require('express').Router();
 const User = require('../../models/User.js');
 
-router.post('/', async (req, res) => {
-  try{
-    const newUser = await User.create(req.body);
+router.post('/signup', async (req, res) => {
+  console.log(req.body);
+
+  try {
+    const userData = await User.create(req.body);
 
     req.session.save(() => {
-      req.session.user_id = newUser.id;
+      req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(err);
+      //res.status(200).json(userData);
+      res.redirect('/dashboard');
     });
-    
-  }catch(err){
+  } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
+ 
 });
 
-// router.post('/login', async (req, res) => {
-//   try {
-//     const userData = await User.findOne({ where: { email: req.body.email } });
+router.get('/signup', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
 
-//     if (!userData) {
-//       res
-//         .status(400)
-//         .json({ message: 'Incorrect email or password, please try again' });
-//       return;
-//     }
-
-//     const validPassword = await userData.checkPassword(req.body.password);
-
-//     if (!validPassword) {
-//       res
-//         .status(400)
-//         .json({ message: 'Incorrect email or password, please try again' });
-//       return;
-//     }
-
-//     req.session.save(() => {
-//       req.session.user_id = userData.id;
-//       req.session.logged_in = true;
-      
-//       res.json({ user: userData, message: 'You are now logged in!' });
-//     });
-
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
-
-
-// router.post('/signup', async (req, res) => {
-//   try {
-//     const userData = await User.create(req.body);
-
-//     req.session.save(() => {
-//       req.session.user_id = userData.id;
-//       req.session.logged_in = true;
-
-//       res.status(200).json(userData);
-//     });
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-//   res.redirect('/dashboard');
-// });
-
-// router.get('/signup', (req, res) => {
-//   if (req.session.logged_in) {
-//     res.redirect('/dashboard');
-//     return;
-//   }
-
-//   res.render('signup');
-// });
-// console.log(User);
-// router.post('/', async (req, res) => {
-//   try {
-//     const userData = await User.create(req.body);
-
-//     req.session.save(() => {
-//       req.session.user_id = userData.id;
-//       req.session.logged_in = true;
-
-//       res.status(200).json(userData);
-//     });
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
+  res.render('signup');
+});
 
 router.post('/login', async (req, res) => {
   try {
@@ -131,5 +71,68 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+// router.post('/', async (req, res) => {
+//   try{
+//     const newUser = await User.create(req.body);
+
+//     req.session.save(() => {
+//       req.session.user_id = newUser.id;
+//       req.session.logged_in = true;
+
+//       res.status(200).json(err);
+//     });
+    
+//   }catch(err){
+//     res.status(400).json(err);
+//   }
+// });
+
+// router.post('/login', async (req, res) => {
+//   try {
+//     const userData = await User.findOne({ where: { email: req.body.email } });
+
+//     if (!userData) {
+//       res
+//         .status(400)
+//         .json({ message: 'Incorrect email or password, please try again' });
+//       return;
+//     }
+
+//     const validPassword = await userData.checkPassword(req.body.password);
+
+//     if (!validPassword) {
+//       res
+//         .status(400)
+//         .json({ message: 'Incorrect email or password, please try again' });
+//       return;
+//     }
+
+//     req.session.save(() => {
+//       req.session.user_id = userData.id;
+//       req.session.logged_in = true;
+      
+//       res.json({ user: userData, message: 'You are now logged in!' });
+//     });
+
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+
+// router.post('/', async (req, res) => {
+//   try {
+//     const userData = await User.create(req.body);
+
+//     req.session.save(() => {
+//       req.session.user_id = userData.id;
+//       req.session.logged_in = true;
+
+//       res.status(200).json(userData);
+//     });
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 module.exports = router;

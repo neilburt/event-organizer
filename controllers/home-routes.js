@@ -16,6 +16,43 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/dashboard', (req, res) => {
+  if(!req.session.logged_in){
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('dashboard');
+});
+
+router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('signup');
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
 // router.get('/dashboard', withAuth, async (req, res) => {
 //   try{
 //     const userData = await User.findByPk(req.session.user_id, {
@@ -35,23 +72,6 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
-router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/dashboard');
-    return;
-  }
-
-  res.render('login');
-});
-
-router.get('/signup', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/dashboard');
-    return;
-  }
-
-  res.render('signup');
-});
 // router.post('/login', async (req, res) => {
 //   try {
 //     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -109,15 +129,6 @@ router.get('/signup', (req, res) => {
 
 //   res.render('signup');
 // });
-
-router.get('/dashboard', (req, res) => {
-  if(!req.session.logged_in){
-    res.redirect('/login');
-    return;
-  }
-
-  res.render('dashboard');
-});
 
 
 // router.get('/results', async (req, res) => {
