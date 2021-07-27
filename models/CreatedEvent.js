@@ -26,7 +26,6 @@ CreatedEvent.init(
 
         details: {
             type: DataTypes.TEXT,
-            allowNull: false
         },
 
         user_id: {
