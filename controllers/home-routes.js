@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const User = require("../models/User");
+const SavedEvent = require("../models/SavedEvent");
 
 
 router.get('/', async (req, res) => {
@@ -16,13 +17,15 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard',async (req, res) => {
   if(!req.session.logged_in){
     res.redirect('/login');
     return;
   }
-
-  res.render('dashboard');
+  let savedEvents = await SavedEvent.findAll({ where: { user_id: req.session.user_id }});
+  savedEvents = savedEvents.map(events => events.get({plain: true}));
+  console.log(savedEvents);
+  res.render('dashboard', {savedEvents});
 });
 
 router.get('/login', (req, res) => {

@@ -28,9 +28,11 @@ SavedEvent.init(
             allowNull: false
         },
         
-        date: {
-            type: DataTypes.DATE,
-            allowNull: false
+
+        datetime_local: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: DataTypes.NOW
         },
 
         // details: {

@@ -29,15 +29,15 @@ const savedEvent = async(event) => {
     const title = document.querySelector('#event-title').innerText;
     // const location = document.querySelector('#event-location').innerText;
     const type = document.querySelector('#event-type').innerText;
-    const date = document.querySelector('#event-date').innerText;
+    const datetime_local = document.querySelector('#event-date').innerText;
 
-    console.log(title, type, date);
+    console.log(title, type, datetime_local);
 
-    if (title /*&& location*/&& type && date) {
+    if (title && type && datetime_local) {
         
             const response = await fetch(`/api/events/saved`, {
                 method: 'POST',
-                body: JSON.stringify({ title,/*location,*/ type, date }),
+                body: JSON.stringify({ title, location, type, datetime_local }),
                 headers: {
                 'Content-Type': 'application/json',
                 },
@@ -50,7 +50,6 @@ const savedEvent = async(event) => {
         }
     }
 };
-
 
 const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
@@ -67,7 +66,6 @@ const delButtonHandler = async (event) => {
         }
     }
 };
-
 
 document.querySelector('#new-event-form').addEventListener('submit', newEventHandler);
 
