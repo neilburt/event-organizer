@@ -18,10 +18,16 @@ SavedEvent.init(
             defaultValue: DataTypes.NOW
         },
 
-        details: {
+        type: {
             type: DataTypes.TEXT,
             allowNull: false
             
+        },
+
+        datetime_local: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: DataTypes.NOW
         },
 
         user_id: {
