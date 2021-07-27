@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 const User = require("../models/User");
 
 
@@ -81,6 +81,15 @@ router.get('/signup', (req, res) => {
   }
 
   res.render('signup');
+});
+
+router.get('/dashboard', (req, res) => {
+  if(!req.session.logged_in){
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('dashboard');
 });
 
 
