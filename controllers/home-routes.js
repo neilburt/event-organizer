@@ -1,7 +1,7 @@
 const router = require('express').Router();
 // const withAuth = require('../utils/auth');
 const User = require("../models/User");
-const fetch = require("node-fetch");
+
 
 router.get('/', async (req, res) => {
   console.log("landing page");
@@ -25,46 +25,78 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.post('/login', async (req, res) => {
+  try {
+    const userData = await User.findOne({ where: { email: req.body.email } });
+
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    const validPassword = await userData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      
+      res.json({ user: userData, message: 'You are now logged in!' });
+    });
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+
+router.post('/signup', async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+  res.redirect('/dashboard');
+});
+
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/dashboard');
     return;
   }
 
-  res.render('dashboard');
+  res.render('signup');
 });
 
 
-router.get('/results', async (req, res) => {
-  console.log("results page");
-  try {
-    res.render('results', {
-      User,
-      // logged_in: req.session.logged_in,
-    });
+// router.get('/results', async (req, res) => {
+  
+//   console.log("results page");
+//   try {
+//     res.render('results', {
+//       User,
+//       // logged_in: req.session.logged_in,
+//     });
     
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-// router.get('/apitest', async function(req, res) {
-//     console.log("api hit")
-  
-//     // const apikey = "41ea6b300379c4e9d39458d185e60c52b49d4768398589851fa2ecdd1bd7b30f:MjI2MjI4NTh8MTYyNjk3MDg5NS41Mzc3NTc";
-  
-//     const clientId = "MjI2MjI4NTh8MTYyNjk3MDg5NS41Mzc3NTc";
-//     const clientSecret = "41ea6b300379c4e9d39458d185e60c52b49d4768398589851fa2ecdd1bd7b30f";
-//     const query = "events";
-//     const id = "2";
-  
-//     const result = await fetch(`https://api.seatgeek.com/${id}/${query}?client_id=${clientId}&client_secret=${clientSecret}`);
-//     const data = await result.json()
-  
-//     console.log(data)
-  
-//     res.json({data: data});
-  
-//   });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 
 
