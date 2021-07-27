@@ -1,5 +1,3 @@
-
-
 const newEventHandler = async (event) => {
     event.preventDefault();
 
@@ -13,7 +11,7 @@ const newEventHandler = async (event) => {
             body: JSON.stringify({ title, location, details }),
             headers: {
                 'Content-Type': 'application/json',
-            },
+            }
         });
 
         if (response.ok) {
@@ -53,7 +51,6 @@ const savedEvent = async(event) => {
     }
 };
 
-
 const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
@@ -70,11 +67,10 @@ const delButtonHandler = async (event) => {
     }
 };
 
+document.querySelector('#new-event-form').addEventListener('submit', newEventHandler);
 
-// document.querySelector('#new-event-form').addEventListener('submit', newEventHandler);
 
-
-document.querySelector('#saveBtn').addEventListener('click', savedEvent);
+// document.querySelector('#saveBtn').addEventListener('click', savedEvent);
 
     // document
     // .querySelector('#deletebtn')

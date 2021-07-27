@@ -18,17 +18,27 @@ SavedEvent.init(
             defaultValue: DataTypes.NOW
         },
 
+        // location: {
+        //     type: DataTypes.STRING,
+        //     allowNull:false,
+        // },
+
         type: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false
-            
         },
+        
 
         datetime_local: {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: DataTypes.NOW
         },
+
+        // details: {
+        //     type: DataTypes.TEXT,
+        //     defaultValue: "Details unavailable."
+        // },
 
         user_id: {
             type: DataTypes.INTEGER,
@@ -40,7 +50,7 @@ SavedEvent.init(
     },
     {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         freezeTableName: true,
         modelName: 'savedEvent'
     }
