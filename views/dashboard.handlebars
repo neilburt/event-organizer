@@ -1,42 +1,43 @@
+
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{username}}!</h2>
+    <h2>Welcome, {{user.name}}!</h2>
   </div>
 </div>
 
 <div class="row mt-4">
   <div class="col-md-6">
 
-  {{#if events.length}}
-  <div class="col-md-6 event-list">
-    <h2>Saved Events!</h2>
+    {{#if events.length}}
+    <div class="col-md-6 event-list">
+      <h2>Saved Events!</h2>
 
-    {{#each events as |event|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/events/{{event.id}}">{{event.name}}</a></h4>
+      {{#each events as |event|}}
+      <div class="row mb-2">
+        <div class="col-md-8">
+          <h4><a href="/events/{{event.id}}">{{event.name}}</a></h4>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-sm btn-danger" data-id="{{event.id}}">DELETE</button>
+        </div>
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{event.id}}">DELETE</button>
-      </div>
+      {{/each}}
     </div>
-    {{/each}}
-  </div>
-  {{/if}}
+    {{/if}}
 
-  <h3>Create a New Event:</h3>
-    <form class="form new-event-form">
+    <h3>Create a New Event:</h3>
+    <form id="new-event-form">
       <div class="form-group">
         <label for="event-name">Event Name:</label>
         <input class="form-input" type="text" id="event-name" name="event-name" />
       </div>
       <div class="form-group">
         <label for="location">Location:</label>
-        <input class="form-input" type="number" id="location" name="location" />
+        <input class="form-input" type="text" id="event-location" name="location" />
       </div>
       <div class="form-group">
         <label for="details">Details:</label>
-        <textarea class="form-input" id="details" name="details"></textarea>
+        <textarea class="form-input" id="event-details" name="details"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Bada Bing Bada Boom</button>
@@ -45,5 +46,42 @@
   </div>
 
 </div>
-{{!-- 
-<script src="./js/profile.js"></script> --}}
+
+
+{{#if events.length}}
+<div class="col-md-6" id="createdEvent-list">
+  <h3>Current Events:</h3>
+
+  {{#each events as |event|}}
+  <div class="row mb-2">
+    <div class="col-md-8">
+      <h4><a href="/events/{{event.id}}">{{event.name}}</a></h4>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-sm btn-danger" data-id="{{event.id}}">DELETE</button>
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{/if}}
+</div>
+
+{{#if events.length}}
+<div class="col-md-6" id="savedEvent-list">
+  <h3>Current Events:</h3>
+
+  {{#each events as |event|}}
+  <div class="row mb-2">
+    <div class="col-md-8">
+      <h4><a href="/events/{{event.id}}">{{event.name}}</a></h4>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-sm btn-danger" id="deletebtn" data-id="{{event.id}}">DELETE</button>
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{/if}}
+</div>
+
+<script src="./js/dashboard.js"></script>
