@@ -24,20 +24,20 @@ router.get('/zip/:zipcode', async function (req, res) {
 
 //How to search for different types of events -- concert ** sports **monster_truck
 // Taxonomy search by type of event
-router.get('/type/:type', async function (req, res) {
-    const clientId = "MjI2MjI4NTh8MTYyNjk3MDg5NS41Mzc3NTc";
-    const clientSecret = "41ea6b300379c4e9d39458d185e60c52b49d4768398589851fa2ecdd1bd7b30f";
-    const endpoint = "events";
-    const type = req.params.type;
-    console.log(req.params.type);
+// router.get('/type/:type', async function (req, res) {
+//     const clientId = "MjI2MjI4NTh8MTYyNjk3MDg5NS41Mzc3NTc";
+//     const clientSecret = "41ea6b300379c4e9d39458d185e60c52b49d4768398589851fa2ecdd1bd7b30f";
+//     const endpoint = "events";
+//     const type = req.params.type;
+//     console.log(req.params.type);
 
-    const result = await fetch(`https://api.seatgeek.com/2/${endpoint}?taxonomies.name=${type}&postal_code=90210&per_page=25&client_id=${clientId}&client_secret=${clientSecret}`);
-    const data = await result.json()
+//     const result = await fetch(`https://api.seatgeek.com/2/${endpoint}?taxonomies.name=${type}&postal_code=90210&per_page=25&client_id=${clientId}&client_secret=${clientSecret}`);
+//     const data = await result.json()
 
-    console.log(data);
+//     console.log(data);
 
-    res.json({ data: data });
-});
+//     res.json({ data: data });
+// });
 
 
 // // City Search
