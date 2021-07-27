@@ -31,6 +31,12 @@ User.init(
       },
     },
 
+    zipcode: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      
+    },
+
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -54,7 +60,7 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'User',
+    modelName: 'user',
   }
 );
 

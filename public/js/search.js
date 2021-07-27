@@ -28,10 +28,6 @@ const apiGetByZip = async (event) => {
   
 
 
-
-
-
-
 const apiGetByType = async (event) => {
   event.preventDefault();
   const typeInput = document.querySelector("#typeInput").value.trim();
