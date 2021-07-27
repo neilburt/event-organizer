@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class CreatedEvent extends Model {}
@@ -19,10 +18,15 @@ CreatedEvent.init(
             defaultValue: DataTypes.NOW
         },
 
+        location: {
+            type: DataTypes.STRING,
+            allowNull: false,
+
+        },
+
         details: {
             type: DataTypes.TEXT,
             allowNull: false
-            
         },
 
         user_id: {
