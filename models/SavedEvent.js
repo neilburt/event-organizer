@@ -14,14 +14,22 @@ SavedEvent.init(
         
         title: {
             type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: DataTypes.NOW
+            allowNull: false
         },
 
-        details: {
-            type: DataTypes.TEXT,
+        type: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+
+        // details: {
+        //     type: DataTypes.TEXT,
+        //     defaultValue: "Details unavailable."
+        // },
+
+        date: {
+            type: DataTypes.DATE,
             allowNull: false
-            
         },
 
         user_id: {
@@ -34,9 +42,9 @@ SavedEvent.init(
     },
     {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         freezeTableName: true,
-        modelName: 'savedEvent'
+        modelName: 'savedevent'
     }
 )
 

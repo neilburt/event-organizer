@@ -35,11 +35,11 @@ const savedEvent = async(event) => {
 
     console.log(title, type, date);
 
-    if (title && location && type && date) {
+    if (title /*&& location*/&& type && date) {
         
             const response = await fetch(`/api/events/saved`, {
                 method: 'POST',
-                body: JSON.stringify({ title, location, type, date }),
+                body: JSON.stringify({ title,/*location,*/ type, date }),
                 headers: {
                 'Content-Type': 'application/json',
                 },
