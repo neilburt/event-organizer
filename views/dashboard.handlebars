@@ -84,4 +84,16 @@
 {{/if}}
 </div>
 
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+
+    {{#each savedEvents as |event|}}
+    {{> savedEventsCard}}
+    {{/each}}
+
+  </div>
+</div>
+
+
+
 <script src="./js/dashboard.js"></script>
