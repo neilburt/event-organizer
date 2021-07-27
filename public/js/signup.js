@@ -6,7 +6,7 @@ const signupFormHandler = async (event) => {
     const password = document.querySelector('#password-signup').value.trim();
   
     if (name && email && password) {
-      const response = await fetch('/signup', {
+      const response = await fetch('api/users', {
         method: 'POST',
         body: JSON.stringify({ name, email, password }),
         headers: { 'Content-Type': 'application/json' },
@@ -20,8 +20,8 @@ const signupFormHandler = async (event) => {
     }
   };
 
-  window.onload = function(){
-    var c = document.getElementById("signup-form");
-       c.addEventListener("click", signupFormHandler);
-   }
-//   document.querySelector('signupFormHandler').addEventListener('click', signupFormHandler);
+  // window.onload = function(){
+  //   var c = document.getElementById("signup-form");
+  //      c.addEventListener("click", signupFormHandler);
+  //  }
+  document.querySelector('#signup-form').addEventListener('click', signupFormHandler);

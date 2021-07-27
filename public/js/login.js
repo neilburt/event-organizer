@@ -8,7 +8,7 @@ const loginFormHandler = async (event) => {
     
     if (email && password) {
       // Send a POST request to the API endpoint
-      const response = await fetch('/login', {
+      const response = await fetch('/api/users/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },
@@ -23,12 +23,12 @@ const loginFormHandler = async (event) => {
     }
   };
   
-  window.onload = function(){
-    var c = document.getElementById("login-form");
-       c.addEventListener("click", loginFormHandler);
-   }
+  // window.onload = function(){
+  //   var c = document.getElementById("login-form");
+  //      c.addEventListener("click", loginFormHandler);
+  //  }
   
-  // document.querySelector('#login-form').addEventListener('click', loginFormHandler);
+  document.querySelector('#login-form').addEventListener('click', loginFormHandler);
   
   
   
