@@ -74,6 +74,27 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.get('api/events/:id', async (req, res) => {
+  try{
+    const eventData = await CreatedEvent.findByPk(req.params.id, {
+      include: [{
+        model: User,
+        attributes: ['name']
+      }]
+    });
+
+    const createdEvents = eventData.get({plain: true});
+
+    res.render('dashboard', {
+      ...createdEvents,
+      logged_in: req.session.logged_in
+    });
+
+  }catch(err){
+    res.status(500).json(err);
+  }
+});
+
 // router.get('/dashboard', withAuth, async (req, res) => {
 //   try{
 //     const userData = await User.findByPk(req.session.user_id, {
