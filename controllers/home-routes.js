@@ -2,8 +2,9 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const User = require("../models/User");
 const SavedEvent = require("../models/SavedEvent");
+const CreatedEvent = require('../models/CreatedEvent');
 
-
+// Render landing page initially
 router.get('/', async (req, res) => {
   console.log("landing page");
   try {
@@ -17,6 +18,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Render saved API events from table to dashboard
 router.get('/dashboard',async (req, res) => {
   if(!req.session.logged_in){
     res.redirect('/login');
@@ -28,6 +30,19 @@ router.get('/dashboard',async (req, res) => {
   res.render('dashboard', {savedEvents});
 });
 
+// Render created events from table to dashboard
+router.get('/dashboard',async (req, res) => {
+  if(!req.session.logged_in){
+    res.redirect('/login');
+    return;
+  }
+  let createdEvents = await CreatedEvent.findAll({ where: { user_id: req.session.user_id }});
+  createdEvents = createdEvents.map(events => events.get({plain: true}));
+  console.log(createdEvents);
+  res.render('dashboard', {createdEvents});
+});
+
+// Login redirect to dashboard once logged in
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/dashboard');
@@ -37,6 +52,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Signup redirect to dashboard once account created
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/dashboard');
@@ -46,6 +62,8 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+
+// Logout redirect to landing page
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
