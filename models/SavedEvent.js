@@ -30,8 +30,8 @@ SavedEvent.init(
 
         datetime_local: {
             type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: DataTypes.NOW
+            allowNull: true,
+            defaultValue: "TBD"
         },
 
         // details: {
