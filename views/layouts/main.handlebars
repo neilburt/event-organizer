@@ -18,15 +18,16 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <!-- Conditionally render login or logout links -->
         {{!-- {{#if logged_in}} --}}
-        <a href="/dashboard">Dashboard</a> |
+        <a href="/dashboard">Dashboard</a>
         <button class="no-button" id="logout">Logout</button>
         {{!-- {{else}} --}}
         <a href="/login">Login</a>
         <a href="/signup">Signup</a>
+        <a href="/">Search</a>
         {{!-- {{/if}} --}}
       </nav>
     </header>
-    <main class="container container-fluid mt-5">
+    <main>
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
@@ -36,9 +37,9 @@
   </div>
 
   <!-- Render script for logged in users only -->
-  {{!-- {{#if logged_in}} --}}
+  
   <script src="./js/logout.js"></script>
-  {{!-- {{/if}} --}}
+
 
 </body>
 

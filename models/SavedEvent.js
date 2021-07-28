@@ -14,8 +14,7 @@ SavedEvent.init(
         
         title: {
             type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: DataTypes.NOW
+            allowNull: false
         },
 
         // location: {
