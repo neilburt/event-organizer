@@ -1,12 +1,13 @@
-//Delete saved event 
-const delBtnSaved = async (event) => {
+//Update created event
+
+const updateCreatedEvent = async(event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
         let data;
 
         try {
             const response = await fetch(`/api/events/saved`, {
-                method: 'DELETE',
+                method: 'PUT',
                 body: JSON.stringify({ id: id }),
                 headers: {
                     'Content-Type': 'application/json'
@@ -22,13 +23,13 @@ const delBtnSaved = async (event) => {
         if (data) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed to delete event');
+            alert('Failed to update event');
         }
-       
-    }
+  }
 };
 
-var deleteBtn = document.querySelectorAll(".deleteBtn")
-for (var i = 0; i < deleteBtn.length; i++) {
-    deleteBtn[i].addEventListener("click", delBtnSaved);
+//Loop through the buttons
+var updateBtn = document.querySelectorAll(".updateBtn")
+for (var i = 0; i < updateBtn.length; i++) {
+    updateBtn[i].addEventListener("click", updateCreatedEvent);
 }

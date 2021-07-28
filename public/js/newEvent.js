@@ -1,3 +1,5 @@
+//Creating a new event
+
 const newEventHandler = async (event) => {
   event.preventDefault();
 
