@@ -38,27 +38,36 @@ router.post('/saved', withAuth, async (req, res) => {
   }
 });
 
-//Update created event 
-// router.put('/:id', withAuth, (req, res) => {
-//   createdEvent.update(req.body,
-//       {
-//           where: {
-//               id: req.params.id
-//           }
-//       }
-//   )
-//   .then(createdEventData => {
-//       if (!createdEventData) {
-//           res.status(404).json({ message: 'No event found with this id' });
-//           return;
-//       }
-//       res.json(createdEventData);
-//   })
-//   .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err)
-//   });
-// });
+
+
+router.put('/', withAuth, async (req, res) => {
+  console.log("update id", req.body)
+  try{
+    const eventData = await CreatedEvent.update({
+        title: req.body.title,
+        location: req.body.location,
+        details: req.body.details
+      },
+      {
+      where: {
+        id: req.body.id,
+        user_id: req.session.user_id
+      }
+    });
+
+    if(!eventData){
+      res.status(404).json({message: " Cannot find id to update"}); 
+
+      return;
+    }
+
+    res.status(200).json(eventData);
+
+  }catch(err){
+    console.log("Error updating event.", err)
+    res.status(500).json(err);
+  }
+});
 
 // Allows for deletion of Events(CRUD)
 router.delete('/', withAuth, async (req, res) => {
@@ -68,7 +77,6 @@ router.delete('/', withAuth, async (req, res) => {
       where: {
         id: req.body.id,
         user_id: req.session.user_id
-        
       }
     });
 
