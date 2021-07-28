@@ -15,6 +15,7 @@ SavedEvent.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false
+<<<<<<< HEAD
         },
 
         type: {
@@ -29,8 +30,31 @@ SavedEvent.init(
 
         date: {
             type: DataTypes.DATE,
+=======
+        },
+
+        // location: {
+        //     type: DataTypes.STRING,
+        //     allowNull:false,
+        // },
+
+        type: {
+            type: DataTypes.STRING,
+>>>>>>> 129de226d685ba552f18092ca572aac696437707
             allowNull: false
         },
+        
+
+        datetime_local: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: DataTypes.NOW
+        },
+
+        // details: {
+        //     type: DataTypes.TEXT,
+        //     defaultValue: "Details unavailable."
+        // },
 
         user_id: {
             type: DataTypes.INTEGER,

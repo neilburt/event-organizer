@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const User = require("../models/User");
+const SavedEvent = require("../models/SavedEvent");
+const CreatedEvent = require('../models/CreatedEvent');
 
-
+// Render landing page initially
 router.get('/', async (req, res) => {
   console.log("landing page");
   try {
@@ -16,15 +18,24 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/dashboard', (req, res) => {
+// Render saved API events from table to dashboard
+router.get('/dashboard',async (req, res) => {
   if(!req.session.logged_in){
     res.redirect('/login');
     return;
   }
+  let savedEvents = await SavedEvent.findAll({ where: { user_id: req.session.user_id }});
+  savedEvents = savedEvents.map(events => events.get({plain: true}));
 
-  res.render('dashboard');
+  let createdEvents = await CreatedEvent.findAll({ where: { user_id: req.session.user_id }});
+  createdEvents = createdEvents.map(events => events.get({plain: true}));
+
+  console.log(savedEvents);
+  res.render('dashboard', {savedEvents, createdEvents});
 });
 
+
+// Login redirect to dashboard once logged in
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/dashboard');
@@ -34,6 +45,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Signup redirect to dashboard once account created
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/dashboard');
@@ -43,6 +55,8 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+
+// Logout redirect to landing page
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -50,6 +64,27 @@ router.post('/logout', (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+
+router.get('api/events/:id', async (req, res) => {
+  try{
+    const eventData = await CreatedEvent.findByPk(req.params.id, {
+      include: [{
+        model: User,
+        attributes: ['name']
+      }]
+    });
+
+    const createdEvents = eventData.get({plain: true});
+
+    res.render('dashboard', {
+      ...createdEvents,
+      logged_in: req.session.logged_in
+    });
+
+  }catch(err){
+    res.status(500).json(err);
   }
 });
 

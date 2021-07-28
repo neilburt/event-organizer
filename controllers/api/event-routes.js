@@ -4,19 +4,45 @@ const SavedEvent = require('../../models/SavedEvent');
 const withAuth = require('../../utils/auth');
 
 // Create events
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try{
-    const newEvent = await CreatedEvent.create({
+    const createdEvent = await CreatedEvent.create({
       ...req.body,
       user_id: req.session.user_id
     });
 
-    res.status(200).json(newEvent);
-  
+    console.log(createdEvent);
+    //res.render("dashboard", createdEvent);
+    res.json({ result: "success" });
+
+
   }catch(err){
+    console.log(err);
     res.status(400).json(err);
   }
 });
+
+// router.get('/', async (req, res) => {
+//   try{
+//     const eventData = await CreatedEvent.findAll({
+//       attributes: req.body,
+//       include: [{
+//         model: User,
+//         attributes: ['name']
+//       }]
+//     });
+
+//     const createdEvents = eventData.map((createdEvent) => createdEvent.get({plain: true}));
+
+//     res.render('dashboard', {
+//       createdEvents
+//     });
+
+//   }catch(err){
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 // Allows for deletion of Events(CRUD)
 router.delete('/:id', withAuth, async (req, res) => {
