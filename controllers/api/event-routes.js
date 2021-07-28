@@ -12,7 +12,9 @@ router.post('/', withAuth, async (req, res) => {
     });
 
     console.log(createdEvent);
-    res.render.json("dashboard", createdEvent);
+    //res.render("dashboard", createdEvent);
+    res.json({ result: "success" });
+
 
   }catch(err){
     console.log(err);
@@ -20,27 +22,27 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
-  try{
-    const eventData = await CreatedEvent.findAll({
-      attributes: req.body,
-      include: [{
-        model: User,
-        attributes: ['name']
-      }]
-    });
+// router.get('/', async (req, res) => {
+//   try{
+//     const eventData = await CreatedEvent.findAll({
+//       attributes: req.body,
+//       include: [{
+//         model: User,
+//         attributes: ['name']
+//       }]
+//     });
 
-    const createdEvents = eventData.map((createdEvent) => createdEvent.get({plain: true}));
+//     const createdEvents = eventData.map((createdEvent) => createdEvent.get({plain: true}));
 
-    res.render('dashboard', {
-      createdEvents
-    });
+//     res.render('dashboard', {
+//       createdEvents
+//     });
 
-  }catch(err){
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//   }catch(err){
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 // Allows for deletion of Events(CRUD)
 router.delete('/:id', withAuth, async (req, res) => {
