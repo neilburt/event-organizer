@@ -31,7 +31,7 @@ router.get('/dashboard',async (req, res) => {
   createdEvents = createdEvents.map(events => events.get({plain: true}));
 
   console.log(savedEvents);
-  res.render('dashboard', {savedEvents, createdEvents});
+  res.render('dashboard', {user: req.session.user, savedEvents, createdEvents});
 });
 
 
