@@ -1,60 +1,58 @@
-
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{user.name}}!</h2>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col-md-6">
-
-    {{#if savedEvents.length}}
-    <div class="col-md-6 event-list">
-      <h2>Saved Events!</h2>
-
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-
-    {{#each savedEvents as |event|}}
-    {{> savedEventsCard}}
-    {{/each}}
-
-  </div>
-
-  
+  <h2>Welcome, {{user.name}}!</h2>
 </div>
-    {{/if}}
-    <h3>Create a New Event:</h3>
-    <form id="new-event-form">
-      <div class="form-group">
-        <label for="event-name">Event Name:</label>
-        <input class="form-input" type="text" id="event-name" name="event-name" />
-      </div>
-      <div class="form-group">
-        <label for="location">Location:</label>
-        <input class="form-input" type="text" id="event-location" name="location" />
-      </div>
-      <div class="form-group">
-        <label for="details">Details:</label>
-        <textarea class="form-input" id="event-details" name="details"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Bada Bing Bada Boom</button>
-      </div>
-    </form>
-  </div>
 
+<div>
+  <div class="row">
+  
+    <div class="col-3">
+      <h2>Your Events:</h2>
+         {{#if createdEvents.length}}
+      <div>
+      {{#each createdEvents as |event|}}
+      {{> createdEventsCard}}
+      {{/each}}
+      </div>
+         {{/if}}
+    </div>
+ 
+    <div class="col-6">
+      <h3>Create a New Event:</h3>
+      <form class="new-event-form">
+        <div class="form-group">
+          <label for="event-title">Event Title:</label>
+          <input class="event-title form-input" type="text" name="event-title" />
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input class="event-location form-input" type="text" name="location" />
+        </div>
+        <div class="form-group">
+          <label for="details">Details:</label>
+          <textarea class="event-details form-input" name="details"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Bada Bing Bada Boom</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-3">
+      <h2>Saved Events:</h2>
+       {{#if savedEvents.length}}
+      <div>
+      {{#each savedEvents as |event|}}
+      {{> savedEventsCard}}
+      {{/each}}
+      </div>
+         {{/if}}
+    </div>
+ 
+  </div>
 </div>
 
 {{#if createdEvents.length}}
-<div class="col-md-6" id="savedEvent-list">
-  <h3>Your Events:</h3>
-
-    {{#each createdEvents as |event|}}
-    {{> createdEventsCard}}
-    {{/each}}
-
-    <script src="../../../js/createdEventsDel.js"></script>
+<script src="../../../js/createdEventsDel.js"></script>
 {{/if}}
 
 <script src="../../../js/newEvent.js"></script>
