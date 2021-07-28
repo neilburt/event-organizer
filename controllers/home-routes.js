@@ -26,21 +26,14 @@ router.get('/dashboard',async (req, res) => {
   }
   let savedEvents = await SavedEvent.findAll({ where: { user_id: req.session.user_id }});
   savedEvents = savedEvents.map(events => events.get({plain: true}));
-  console.log(savedEvents);
-  res.render('dashboard', {savedEvents});
-});
 
-// Render created events from table to dashboard
-router.get('/dashboard',async (req, res) => {
-  if(!req.session.logged_in){
-    res.redirect('/login');
-    return;
-  }
   let createdEvents = await CreatedEvent.findAll({ where: { user_id: req.session.user_id }});
   createdEvents = createdEvents.map(events => events.get({plain: true}));
-  console.log(createdEvents);
-  res.render('dashboard', {createdEvents});
+
+  console.log(savedEvents);
+  res.render('dashboard', {savedEvents, createdEvents});
 });
+
 
 // Login redirect to dashboard once logged in
 router.get('/login', (req, res) => {

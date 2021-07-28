@@ -29,7 +29,7 @@ SavedEvent.init(
         
 
         datetime_local: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false,
             defaultValue: DataTypes.NOW
         },
