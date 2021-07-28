@@ -12,7 +12,7 @@ module.exports = {
   format_date: (date) => {
     // MMM Do h:mm
     const dateObj = new Date(date);
-    console.log(dateObj)
+    // console.log(dateObj)
 
     // const intl = new Intl.DateTimeFormat("en", dateObj).format("MMM Do h:mm")
 

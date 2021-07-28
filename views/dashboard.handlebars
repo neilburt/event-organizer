@@ -15,28 +15,7 @@
       </div>
          {{/if}}
     </div>
- 
-    <div class="col-6">
-      <h3>Create a New Event:</h3>
-      <form class="new-event-form">
-        <div class="form-group">
-          <label for="event-title">Event Title:</label>
-          <input class="event-title form-input" type="text" name="event-title" />
-        </div>
-        <div class="form-group">
-          <label for="location">Location:</label>
-          <input class="event-location form-input" type="text" name="location" />
-        </div>
-        <div class="form-group">
-          <label for="details">Details:</label>
-          <textarea class="event-details form-input" name="details"></textarea>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Bada Bing Bada Boom</button>
-        </div>
-      </form>
-    </div>
-
+    <div class="col-6"></div>
     <div class="col-3">
       <h2>Saved Events:</h2>
        {{#if savedEvents.length}}
@@ -51,8 +30,10 @@
   </div>
 </div>
 
+{{#if savedEvents.length}}
+<script src="../../../js/savedEventsDel.js"></script>
+{{/if}}
+
 {{#if createdEvents.length}}
 <script src="../../../js/createdEventsDel.js"></script>
 {{/if}}
-
-<script src="../../../js/newEvent.js"></script>
