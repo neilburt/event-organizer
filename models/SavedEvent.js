@@ -14,8 +14,7 @@ SavedEvent.init(
         
         title: {
             type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: DataTypes.NOW
+            allowNull: false
         },
 
         // location: {
@@ -30,7 +29,7 @@ SavedEvent.init(
         
 
         datetime_local: {
-            type: DataTypes.STRING,
+            type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW
         },
