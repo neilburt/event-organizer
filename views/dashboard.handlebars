@@ -1,12 +1,12 @@
 <div class="jumbotron jumbotron-fluid">
-  <h2>Welcome, {{user.name}}!</h2>
+  <h3 class="welcome">Welcome, {{user.name}}!</h3>
 </div>
 
 <div>
   <div class="row">
   
     <div class="col-3">
-      <h2>Your Events:</h2>
+      <h2>Your Created Events</h2>
          {{#if createdEvents.length}}
       <div>
       {{#each createdEvents as |event|}}
@@ -17,7 +17,7 @@
     </div>
     <div class="col-6"></div>
     <div class="col-3">
-      <h2>Saved Events:</h2>
+      <h2>Saved Events</h2>
        {{#if savedEvents.length}}
       <div>
       {{#each savedEvents as |event|}}

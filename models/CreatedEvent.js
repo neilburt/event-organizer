@@ -21,20 +21,19 @@ CreatedEvent.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        
-        // type: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false
-        // },
-
-        // date: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false
-        // },
 
         details: {
             type: DataTypes.TEXT,
             defaultValue: "Details unavailable."
+        },
+    
+        date: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+
+        max_capacity: {
+            type: DataTypes.INTEGER
         },
 
         user_id: {
