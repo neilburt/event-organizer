@@ -22,31 +22,16 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-//Created a saved Event
-router.post('/saved', withAuth, async (req, res) => {
-  try{
-    const newEvent = await SavedEvent.create({
-      ...req.body,
-      user_id: req.session.user_id
-    });
-
-    res.status(200).json(newEvent);
-  
-  }catch(err){
-    console.log(err);
-    res.status(400).json(err);
-  }
-});
-
-
-//Update event
-router.put('/', withAuth, async (req, res) => {
+//UPDATE event
+router.put('/:id', withAuth, async (req, res) => {
   console.log("update id", req.body)
   try{
     const eventData = await CreatedEvent.update({
         title: req.body.title,
         location: req.body.location,
-        details: req.body.details
+        details: req.body.details,
+        date: req.body.date,
+        max_capacity: req.body.max_capacity
       },
       {
       where: {
@@ -68,6 +53,24 @@ router.put('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+//Created a saved Event
+router.post('/saved', withAuth, async (req, res) => {
+  try{
+    const newEvent = await SavedEvent.create({
+      ...req.body,
+      user_id: req.session.user_id
+    });
+
+    res.status(200).json(newEvent);
+  
+  }catch(err){
+    console.log(err);
+    res.status(400).json(err);
+  }
+});
+
 
 // Allows for deletion of Created Events(CRUD)
 router.delete('/', withAuth, async (req, res) => {

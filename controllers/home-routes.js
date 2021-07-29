@@ -18,6 +18,44 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/update/:id', async (req, res) => {
+  try {
+    const eventData = await CreatedEvent.findByPk(
+      req.params.id
+    )
+    const event = eventData.get({plain: true});
+    console.log(event)
+    res.render('updatedEvent', {
+      User,
+      event,
+      logged_in: req.session.logged_in
+    });
+    
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.put('/update/:id'), async (req, res) => {
+  try {
+    const eventData = await CreatedEvent.update(
+      req.params.id
+    )
+    const event = eventData.get({plain: true});
+    console.log(event)
+    res.replace('updatedEvent', {
+      title,
+      location,
+      details,
+      date,
+      max_capacity
+    });
+    
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
 // Render saved API events from table to dashboard
 router.get('/dashboard',async (req, res) => {
   if(!req.session.logged_in){
