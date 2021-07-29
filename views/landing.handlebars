@@ -1,3 +1,4 @@
+
 <h1> Search Events Near You or Create an Event</h1>
 
 <form id="zip-form" class="form-inline my-2 my-lg-0">
@@ -7,34 +8,34 @@
 
 
 {{#if logged_in}}
-    <div class="col-6">
-      <h3>Create a New Event</h3>
-      <form class="new-event-form">
-        <div class="form-group">
-          <label for="event-title">Event Title:</label>
-          <input class="event-title form-input" type="text" name="event-title" />
-        </div>
-        <div class="form-group">
-          <label for="location">Location:</label>
-          <input class="event-location form-input" type="text" name="location" />
-        </div>
-        <div class="form-group">
-          <label for="details">Details:</label>
-          <textarea class="event-details form-input" name="details"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="date">Date and Time:</label>
-          <textarea class="event-date form-input" name="date"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="max_capacity">Max Capacity:</label>
-          <textarea class="event-capacity form-input" name="max_capacity"></textarea>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Bada Bing Bada Boom</button>
-        </div>
-      </form>
+<div class="col-6 md-col-3">
+  <h3>Create a New Event</h3>
+  <form class="new-event-form">
+    <div class="form-group">
+      <label for="event-title">Event Title:</label>
+      <input class="event-title form-input" type="text" name="event-title" />
     </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input class="event-location form-input" type="text" name="location" />
+    </div>
+    <div class="form-group">
+      <label for="details">Details:</label>
+      <textarea class="event-details form-input" name="details"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="date">Date and Time:</label>
+      <textarea class="event-date form-input" name="date"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="max_capacity">Max Capacity:</label>
+      <textarea class="event-capacity form-input" name="max_capacity"></textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Bada Bing Bada Boom</button>
+    </div>
+  </form>
+</div>
 
 <script src="../../../js/newEvent.js"></script>
 {{/if}}

@@ -22,11 +22,7 @@ const loginFormHandler = async (event) => {
       }
     }
   };
-  
-  // window.onload = function(){
-  //   var c = document.getElementById("login-form");
-  //      c.addEventListener("click", loginFormHandler);
-  //  }
+
   
   document.querySelector('#login-form').addEventListener('click', loginFormHandler);
   
