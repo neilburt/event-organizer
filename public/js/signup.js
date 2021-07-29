@@ -22,8 +22,5 @@ const signupFormHandler = async (event) => {
     }
   };
 
-  // window.onload = function(){
-  //   var c = document.getElementById("signup-form");
-  //      c.addEventListener("click", signupFormHandler);
-  //  }
+ 
   document.querySelector('#signup-form').addEventListener('click', signupFormHandler);

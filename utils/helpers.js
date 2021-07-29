@@ -1,3 +1,5 @@
+//Changing date and time format that we get from third party API
+
 const nth = function(d) {
   if (d > 3 && d < 21) return 'th';
   switch (d % 10) {
@@ -34,31 +36,3 @@ module.exports = {
   }
 }
 
-
-
-
-//handlebars.registerHelper('date', require('helper-date'));
-
-//module.exports = handlebars;
-// module.exports = {
-//   Handlebars.registerHelper('formatDate', function(datetime_local) {
-//   return new Handlebars.SafeString(
-//       moment(datetime_local).format("MMM Do h:mm").toUpperCase()
-//   );
-//   });
-// }
-// // module.exports = {
-// //   formatDate: (datetime_local) => {
-// //   return moment(datetime_local).format("MMM Do h:mm").toUpperCase()
-// //   }
-// // };
-
-// module.exports = {
-//   format_time: (datetime_local) => {
-//     return date.toLocaleTimeString();
-//   },
-//   format_date: (datetime_local) => {
-//     return date.toLocaleDateString();
-//     }
-
-// };
