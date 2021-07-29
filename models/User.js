@@ -30,11 +30,6 @@ User.init(
         isEmail: true,
       },
     },
-
-    zipcode: {
-      type: DataTypes.INTEGER
-    },
-
     password: {
       type: DataTypes.STRING,
       allowNull: false,

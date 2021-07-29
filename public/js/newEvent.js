@@ -6,12 +6,14 @@ const newEventHandler = async (event) => {
   const title = document.querySelector('.event-title').value.trim();
   const location = document.querySelector('.event-location').value.trim(); 
   const details = document.querySelector('.event-details').value.trim();
+  const date = document.querySelector('.event-date').value.trim();
+  const max_capacity = document.querySelector('.event-capacity').value.trim();
 
-  console.log(title, location, details);
-  if (title && location && details) {
+  console.log(title, location, details, date, max_capacity);
+  if (title && location && details && date && max_capacity) {
       const response = await fetch('/api/events', {
           method: 'POST',
-          body: JSON.stringify({ title, location, details }),
+          body: JSON.stringify({ title, location, details, date, max_capacity }),
           headers: {'Content-Type': 'application/json'},
       });
       const data = await response.json();
