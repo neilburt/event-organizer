@@ -33,7 +33,7 @@ Simply install Node.js, open the terminal, run 'npm install' and then 'npm start
   
 Once the application is called by typing 'npm start' in the terminal, the user can load the app in their browser with the localhost:3001 address, click the signup link, and create an account to search for an event by zipcode and save it or create their own.  
   
-Check out the [deployed app](https://.herokuapp.com/) at Heroku.  
+Check out the [deployed app](https://gentle-reaches-60799.herokuapp.com/) at Heroku.  
   
 ## Screenshots  
 ![Screenshot of Event Organizer search results.](./public/images/screenshot.jpg)  
