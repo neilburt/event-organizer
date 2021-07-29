@@ -1,3 +1,5 @@
+//Sign up function
+
 const signupFormHandler = async (event) => {
     event.preventDefault();
   

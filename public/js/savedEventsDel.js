@@ -28,6 +28,7 @@ const delBtnSaved = async (event) => {
     }
 };
 
+//Delete saved Events
 var deleteBtn = document.querySelectorAll(".deleteBtn")
 for (var i = 0; i < deleteBtn.length; i++) {
     deleteBtn[i].addEventListener("click", delBtnSaved);
