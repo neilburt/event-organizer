@@ -11,11 +11,13 @@ const updateCreatedEvent = async (event) => {
         const title = document.querySelector('.event-title').value.trim();
         const location = document.querySelector('.event-location').value.trim();
         const details = document.querySelector('.event-details').value.trim();
-        
+        const date = document.querySelector('.event-date').value.trim();
+        const max_capacity = document.querySelector('.event-capacity').value.trim();
+
         try {
             const response = await fetch(`/api/events/${id}`, {
                 method: 'PUT',
-                body: JSON.stringify({ title, location, details }),
+                body: JSON.stringify({ title, location, details, date, max_capacity }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
