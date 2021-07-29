@@ -17,11 +17,6 @@ SavedEvent.init(
             allowNull: false
         },
 
-        // location: {
-        //     type: DataTypes.STRING,
-        //     allowNull:false,
-        // },
-
         type: {
             type: DataTypes.STRING,
             allowNull: false
@@ -34,9 +29,9 @@ SavedEvent.init(
             defaultValue: "TBD"
         },
 
-        // details: {
-        //     type: DataTypes.TEXT,
-        //     defaultValue: "Details unavailable."
+        // url: {
+        //     type:DataTypes.STRING,
+        //     allowNull: true
         // },
 
         user_id: {

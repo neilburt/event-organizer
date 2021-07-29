@@ -22,7 +22,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-
+//Created a saved Event
 router.post('/saved', withAuth, async (req, res) => {
   try{
     const newEvent = await SavedEvent.create({
@@ -39,7 +39,7 @@ router.post('/saved', withAuth, async (req, res) => {
 });
 
 
-
+//Update event
 router.put('/', withAuth, async (req, res) => {
   console.log("update id", req.body)
   try{
@@ -69,7 +69,7 @@ router.put('/', withAuth, async (req, res) => {
   }
 });
 
-// Allows for deletion of Events(CRUD)
+// Allows for deletion of Created Events(CRUD)
 router.delete('/', withAuth, async (req, res) => {
   console.log("delete id", req.body)
   try{
