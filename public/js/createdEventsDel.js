@@ -1,3 +1,4 @@
+//Delete created Events
 const delBtnCreated = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
@@ -28,8 +29,7 @@ const delBtnCreated = async (event) => {
 };
 
 
-
-//document.querySelector('#deletebtn').addEventListener('click', delButtonHandler);
+//Loop through the buttons to delete the correct created Event
 
 var deleteBtn = document.querySelectorAll(".deleteBtn")
 for (var i = 0; i < deleteBtn.length; i++) {

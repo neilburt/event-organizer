@@ -33,11 +33,6 @@ SavedEvent.init(
 =======
         },
 
-        // location: {
-        //     type: DataTypes.STRING,
-        //     allowNull:false,
-        // },
-
         type: {
             type: DataTypes.STRING,
 >>>>>>> 129de226d685ba552f18092ca572aac696437707
@@ -51,9 +46,9 @@ SavedEvent.init(
             defaultValue: "TBD"
         },
 
-        // details: {
-        //     type: DataTypes.TEXT,
-        //     defaultValue: "Details unavailable."
+        // url: {
+        //     type:DataTypes.STRING,
+        //     allowNull: true
         // },
 
         user_id: {
